@@ -4,6 +4,9 @@ Automates provisioning of AWS RDS databases for Jepsen tests.
 
 ## Usage
 
+See `jepsen.rds/create-postgres!` and `jepsen.rds/teardown!`
+
+<b>WARNING: THIS LIBRARY WILL DESTROY RDS RESOURCES IT DID NOT CREATE. THIS MAY CAUSE DATA LOSS. RUN THIS IN AN ISOLATED ACCOUNT.</b>
 
 ## License
 
