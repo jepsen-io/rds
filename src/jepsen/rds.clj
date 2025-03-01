@@ -162,7 +162,7 @@
                                :actual                status}))))
               {:timeout        (* 1000 60 20) ; yes this literally takes 20 min
                :retry-interval 5000
-               :log-interval   10000
+               :log-interval   30000
                :log-message    (str "Waiting for " db-cluster-identifier
                                     " to become " target-status)}))
   db-cluster-identifier)
@@ -306,10 +306,10 @@
 
     :db-cluster-instance-class  The DB nodes to use. See https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html. Default 'db.m6id.large'.
 
-  :db-subnet-group-name       The name of the DB subnet to create. Default
-                             'jepsen-db-subnet'.
+    :db-subnet-group-name       The name of the DB subnet to create. Default
+                               'jepsen-db-subnet'.
 
-    :engine-version             The DB version to use. Default '16.2'.
+    :engine-version             The DB version to use. Default '17.4.
 
     :master-username            The name of the master user for the DB cluster.
                                 Default 'jepsen'.
@@ -345,7 +345,7 @@
                      :DBClusterInstanceClass (:db-cluster-instance-class
                                                opts "db.m6id.large")
                      :DBSubnetGroupName  db-subnet-group-name
-                     :EngineVersion      (:engine-version opts "16.2")
+                     :EngineVersion      (:engine-version opts "17.4")
                      :MasterUsername     (:master-username opts "jepsen")
                      :MasterUserPassword master-user-password
                      :PubliclyAccessible (:publicly-accessible opts true)
