@@ -154,7 +154,7 @@
                             (try+ (catch [:cognitect.aws.error/code
                                           "DBClusterNotFoundFault"] e
                                     :deleted)))]
-                  (info :status status)
+                  ;(info :status status)
                   (or (= status target-status)
                       (throw+ {:type :waiting-for-cluster-status
                                :db-cluster-identifier db-cluster-identifier
@@ -162,7 +162,7 @@
                                :actual                status}))))
               {:timeout        (* 1000 60 20) ; yes this literally takes 20 min
                :retry-interval 5000
-               :log-interval   30000
+               :log-interval   60000
                :log-message    (str "Waiting for " db-cluster-identifier
                                     " to become " target-status)}))
   db-cluster-identifier)
@@ -309,7 +309,7 @@
     :db-subnet-group-name       The name of the DB subnet to create. Default
                                'jepsen-db-subnet'.
 
-    :engine-version             The DB version to use. Default '17.4.
+    :engine-version             The DB version to use. Default '17.4'.
 
     :master-username            The name of the master user for the DB cluster.
                                 Default 'jepsen'.
